@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import RestaurantList from "@/components/RestaurantList";
+import ChangePageNumButton from "@/components/ChangePageNumButton";
 
 export default function Home() {
   // 現在地の緯度，経度
@@ -13,6 +14,8 @@ export default function Home() {
   });
   //レストランのリスト
   const [restaurantList, setRestaurantList] = useState();
+  //何ページ目を表示するか
+  const [pageNum, setPageNum] = useState(0);
 
   // ページ読み込み時に現在地を取得する.
   useEffect(() => {
@@ -48,7 +51,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <RestaurantList data={restaurantList}></RestaurantList>
+        <RestaurantList
+          data={restaurantList}
+          pageNum={pageNum}
+        ></RestaurantList>
+        <ChangePageNumButton
+          totalPageNum={restaurantList == undefined ? 0 : restaurantList.length}
+          setPageNum={setPageNum}
+        ></ChangePageNumButton>
       </main>
     </>
   );
