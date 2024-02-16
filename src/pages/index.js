@@ -21,11 +21,11 @@ export default function Home() {
         navigator.geolocation.getCurrentPosition(resolve);
       });
 
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
+      //const latitude = position.coords.latitude;
+      //const longitude = position.coords.longitude;
 
-      console.log(latitude);
-      console.log(longitude);
+      const latitude = 36.4304074; //テスト用の座標
+      const longitude = 136.4878406;
 
       setCurrentLocation({ latitude: latitude, longitude: longitude });
 
