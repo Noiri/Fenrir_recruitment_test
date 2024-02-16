@@ -16,9 +16,8 @@ const RestaurantList = (props) => {
                     <Link
                       href={{
                         pathname: "/detail",
-                        query: { info: JSON.stringify(info, null) },
+                        query: { id: info.id },
                       }}
-                      as={"/detail/" + info.name}
                     >
                       {info.name}
                     </Link>
