@@ -1,13 +1,18 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "@/styles/Home.module.css";
+//import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 
+import RestaurantList from "@/components/RestaurantList";
+
 export default function Home() {
+  // 現在地の緯度，経度
   const [currentLocation, setCurrentLocation] = useState({
     latitude: "",
     longitude: "",
   });
+  //レストランのリスト
+  const [restaurantList, setRestaurantList] = useState();
 
   // ページ読み込み時に現在地を取得する.
   useEffect(() => {
@@ -25,6 +30,12 @@ export default function Home() {
       setCurrentLocation({ latitude: latitude, longitude: longitude });
 
       console.log("test");
+
+      const res = await fetch(
+        `/api/getRestaurantList?lat=${latitude}&lon=${longitude}`
+      );
+      const data = await res.json();
+      setRestaurantList(data);
     })();
   }, []);
 
@@ -36,8 +47,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main}`}>
-        <div>Test</div>
+      <main>
+        <RestaurantList data={restaurantList}></RestaurantList>
       </main>
     </>
   );
