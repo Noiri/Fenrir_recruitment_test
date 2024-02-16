@@ -12,6 +12,12 @@ const RestaurantList = (props) => {
               return (
                 <div key={i}>
                   <li>{info.name}</li>
+                  <Image
+                    src={info.photo.pc.m}
+                    alt={info.name}
+                    width={100}
+                    height={100}
+                  />
                 </div>
               );
             })}
