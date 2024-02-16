@@ -12,7 +12,17 @@ const RestaurantList = (props) => {
           : data.slice(3 * pageNum, 3 * (pageNum + 1)).map((info, i) => {
               return (
                 <div key={i}>
-                  <li>{info.name}</li>
+                  <li>
+                    <Link
+                      href={{
+                        pathname: "/detail",
+                        query: { info: JSON.stringify(info, null) },
+                      }}
+                      as={"/detail/" + info.name}
+                    >
+                      {info.name}
+                    </Link>
+                  </li>
                   <Image
                     src={info.photo.pc.m}
                     alt={info.name}
