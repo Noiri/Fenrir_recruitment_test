@@ -1,11 +1,33 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [currentLocation, setCurrentLocation] = useState({
+    latitude: "",
+    longitude: "",
+  });
+
+  // ページ読み込み時に現在地を取得する.
+  useEffect(() => {
+    (async () => {
+      const position = await new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition(resolve);
+      });
+
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      console.log(latitude);
+      console.log(longitude);
+
+      setCurrentLocation({ latitude: latitude, longitude: longitude });
+
+      console.log("test");
+    })();
+  }, []);
+
   return (
     <>
       <Head>
@@ -14,7 +36,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
+      <main className={`${styles.main}`}>
         <div>Test</div>
       </main>
     </>
