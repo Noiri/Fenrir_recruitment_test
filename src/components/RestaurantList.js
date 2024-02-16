@@ -3,12 +3,13 @@ import Image from "next/image";
 
 const RestaurantList = (props) => {
   const data = props.data;
+  const pageNum = props.pageNum;
   return (
     <div>
       <ul>
         {data == undefined
           ? ""
-          : data.map((info, i) => {
+          : data.slice(3 * pageNum, 3 * (pageNum + 1)).map((info, i) => {
               return (
                 <div key={i}>
                   <li>{info.name}</li>
