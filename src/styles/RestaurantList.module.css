@@ -14,11 +14,32 @@
 }
 
 .rightSide {
-    padding: 5px;
+    padding: 10px;
 }
 
 .restaurantName {
-    font-size: 20px;
     margin: 10px 0;
 }
 
+.restaurantNameLink {
+    color: #444;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.catch {
+    color: #444;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.access,
+.open {
+    color: #444;
+    font-size: 14px;
+}
+
+.bold {
+    font-weight: bold;
+}
