@@ -1,0 +1,30 @@
+.restaurantInfo {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    margin: 20px 0;
+    display: flex;
+}
+
+.restaurantName {
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+
+.leftSide {
+    padding: 5px;
+}
+
+.rightSide{
+    padding: 5px;
+}
+
+.address, 
+.open {
+    color: #444;
+    font-size: 14px;
+}
+
+.bold {
+    font-weight: bold;
+}
