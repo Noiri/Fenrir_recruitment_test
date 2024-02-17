@@ -1,0 +1,24 @@
+.restaurantList {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid #ccc;
+}
+
+.restaurant {border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    margin: 20px 0;
+    display: flex;}
+
+.leftSide {
+    padding: 5px;
+}
+
+.rightSide {
+    padding: 5px;
+}
+
+.restaurantName {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
