@@ -6,6 +6,7 @@
 }
 
 .restaurantName {
+    color: #444;
     padding: 20px 0;
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
@@ -20,7 +21,9 @@
 }
 
 .address, 
-.open {
+.open,
+.budget,
+.access {
     color: #444;
     font-size: 14px;
 }

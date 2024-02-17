@@ -39,13 +39,21 @@ const Detail = () => {
                     />
                   </div>
                   <div className={styles.rightSide}>
-                    <div className={styles.address}>
-                      <span className={styles.bold}>住所：</span>
-                      {info.address}
+                    <div className={styles.budget}>
+                      <span className={styles.bold}>予算：</span>
+                      {info.budget.average}
+                    </div>
+                    <div className={styles.access}>
+                      <span className={styles.bold}>アクセス：</span>
+                      {info.access}
                     </div>
                     <div className={styles.open}>
                       <span className={styles.bold}>営業時間：</span>
                       {info.open}
+                    </div>
+                    <div className={styles.address}>
+                      <span className={styles.bold}>住所：</span>
+                      {info.address}
                     </div>
                   </div>
                 </div>
