@@ -2,12 +2,20 @@ import Link from "next/link";
 import Image from "next/image";
 
 import styles from "@/styles/RestaurantList.module.css";
+import { useState } from "react";
+import SetRange from "./SetRange";
 
 const RestaurantList = (props) => {
   const data = props.data;
   const pageNum = props.pageNum;
+  const range = props.range;
+  const setRange = props.setRange;
+
   return (
     <div>
+      <div className={styles.setRangePosition}>
+        <SetRange range={range} setRange={setRange}></SetRange>
+      </div>
       <ul className={styles.restaurantList}>
         {data == undefined
           ? ""

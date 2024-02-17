@@ -17,6 +17,8 @@ export default function Home() {
   //何ページ目を表示するか
   const [pageNum, setPageNum] = useState(0);
 
+  const [range, setRange] = useState(3);
+
   // ページ読み込み時に現在地を取得する.
   useEffect(() => {
     (async () => {
@@ -32,15 +34,13 @@ export default function Home() {
 
       setCurrentLocation({ latitude: latitude, longitude: longitude });
 
-      console.log("test");
-
       const res = await fetch(
-        `/api/getRestaurantList?lat=${latitude}&lon=${longitude}`
+        `/api/getRestaurantList?lat=${latitude}&lon=${longitude}&range=${range}`
       );
       const data = await res.json();
       setRestaurantList(data);
     })();
-  }, []);
+  }, [range]);
 
   return (
     <>
@@ -50,6 +50,8 @@ export default function Home() {
         <RestaurantList
           data={restaurantList}
           pageNum={pageNum}
+          range={range}
+          setRange={setRange}
         ></RestaurantList>
         <ChangePageNumButton
           totalPageNum={restaurantList == undefined ? 0 : restaurantList.length}
