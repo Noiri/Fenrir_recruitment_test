@@ -23,16 +23,28 @@ const RestaurantList = (props) => {
                     />
                   </div>
                   <div className={styles.rightSide}>
-                    <h3 className={styles.restaurantName}>
+                    <div className={styles.catch}>{info.catch}</div>
+
+                    <div className={styles.restaurantName}>
                       <Link
                         href={{
                           pathname: "/detail",
                           query: { id: info.id },
                         }}
+                        className={styles.restaurantNameLink}
                       >
                         {info.name}
                       </Link>
-                    </h3>
+                    </div>
+
+                    <div className={styles.access}>
+                      <span className={styles.bold}>アクセス：</span>
+                      {info.access}
+                    </div>
+                    <div className={styles.open}>
+                      <span className={styles.bold}>営業時間：</span>
+                      {info.open}
+                    </div>
                   </div>
                 </li>
               );
