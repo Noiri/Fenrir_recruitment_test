@@ -2,6 +2,10 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import Header from "@/components/Header";
+
+import styles from "@/styles/detailPage.module.css";
+
 const Detail = () => {
   const router = useRouter();
   const [restaurantDetail, setRestaurantDetail] = useState([]);
@@ -17,23 +21,40 @@ const Detail = () => {
   }, [restaurant_id]);
 
   return (
-    <div>
-      <div>
-        {restaurantDetail.map((info, key) => {
-          return (
-            <div key={key}>
-              <p>{info.name}</p>
-              <Image
-                src={info.photo.pc.l}
-                alt={info.name}
-                width={100}
-                height={100}
-              />
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <>
+      <Header></Header>
+      <main>
+        <div>
+          {restaurantDetail.map((info, key) => {
+            return (
+              <div key={key}>
+                <h1 className={styles.restaurantName}>{info.name}</h1>
+                <div className={styles.restaurantInfo}>
+                  <div className={styles.leftSide}>
+                    <Image
+                      src={info.photo.pc.l}
+                      alt={info.name}
+                      width={300}
+                      height={300}
+                    />
+                  </div>
+                  <div className={styles.rightSide}>
+                    <div className={styles.address}>
+                      <span className={styles.bold}>住所：</span>
+                      {info.address}
+                    </div>
+                    <div className={styles.open}>
+                      <span className={styles.bold}>営業時間：</span>
+                      {info.open}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </main>
+    </>
   );
 };
 
