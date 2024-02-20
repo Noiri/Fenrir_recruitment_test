@@ -19,15 +19,3 @@
 .rightSide{
     padding: 5px;
 }
-
-.address, 
-.open,
-.budget,
-.access {
-    color: #444;
-    font-size: 14px;
-}
-
-.bold {
-    font-weight: bold;
-}
