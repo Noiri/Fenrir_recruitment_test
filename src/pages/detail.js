@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 
 import styles from "@/styles/detailPage.module.css";
+import RestaurantDescription from "@/components/RestaurantDescription";
 
 const Detail = () => {
   const router = useRouter();
@@ -39,22 +40,15 @@ const Detail = () => {
                     />
                   </div>
                   <div className={styles.rightSide}>
-                    <div className={styles.budget}>
-                      <span className={styles.bold}>予算：</span>
-                      {info.budget.average}
-                    </div>
-                    <div className={styles.access}>
-                      <span className={styles.bold}>アクセス：</span>
-                      {info.access}
-                    </div>
-                    <div className={styles.open}>
-                      <span className={styles.bold}>営業時間：</span>
-                      {info.open}
-                    </div>
-                    <div className={styles.address}>
-                      <span className={styles.bold}>住所：</span>
-                      {info.address}
-                    </div>
+                    <RestaurantDescription
+                      captions={["予算", "アクセス", "営業時間", "住所"]}
+                      descriptions={[
+                        info.budget.average,
+                        info.access,
+                        info.open,
+                        info.address,
+                      ]}
+                    ></RestaurantDescription>
                   </div>
                 </div>
               </div>

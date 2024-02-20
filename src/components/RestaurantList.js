@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "@/styles/RestaurantList.module.css";
 import { useState } from "react";
 import SetRange from "./SetRange";
+import RestaurantDescription from "./RestaurantDescription";
 
 const RestaurantList = (props) => {
   const data = props.data;
@@ -45,14 +46,10 @@ const RestaurantList = (props) => {
                       </Link>
                     </div>
 
-                    <div className={styles.access}>
-                      <span className={styles.bold}>アクセス：</span>
-                      {info.access}
-                    </div>
-                    <div className={styles.open}>
-                      <span className={styles.bold}>営業時間：</span>
-                      {info.open}
-                    </div>
+                    <RestaurantDescription
+                      captions={["アクセス", "営業時間"]}
+                      descriptions={[info.access, info.open]}
+                    ></RestaurantDescription>
                   </div>
                 </li>
               );
