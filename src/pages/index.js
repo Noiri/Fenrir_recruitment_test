@@ -18,6 +18,8 @@ export default function Home() {
   const [pageNum, setPageNum] = useState(0);
   //検索範囲の設定
   const [range, setRange] = useState(3);
+  //1ページあたりの表示件数
+  const numOfDisplaysPerPage = 10;
 
   // ページ読み込み時に現在地を取得する.
   useEffect(() => {
@@ -48,10 +50,12 @@ export default function Home() {
           pageNum={pageNum}
           range={range}
           setRange={setRange}
+          numOfDisplaysPerPage={numOfDisplaysPerPage}
         ></RestaurantList>
         <ChangePageNumButton
           totalPageNum={restaurantList == undefined ? 0 : restaurantList.length}
           setPageNum={setPageNum}
+          numOfDisplaysPerPage={numOfDisplaysPerPage}
         ></ChangePageNumButton>
       </main>
     </>
