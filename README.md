@@ -1,40 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 簡易仕様書
 
-## Getting Started
-
-First, run the development server:
-
+## アプリケーションの立ち上げ方
+### 手順1
+プロジェクトルートに`.env.local`を作成し，以下の内容を記述してください．
+```
+HOT_PEPPER_API_KEY=YOUR_API_KEY
+```
+### 手順2
+以下のコマンドでアプリケーションが`http://localhost:3000`で立ち上がります．
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## アプリ名
+アプリ名は`Gourmet Local`です．
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 対象OSおよびブラウザ
+OSはMacOS, ブラウザはChromeの最新安定版（119.0.6045.212）で開発し，動作確認を行いました．
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 開発期間
+5日程度で作成しました．
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 機能概要
+実装した機能
+- レストラン検索：ホットペッパーグルメサーチAPIを使用して，現在地周辺(300~3000m)の飲食店一覧を取得し表示する．
+- レストラン情報取得：ホットペッパーグルメサーチAPIを使用して，飲食店の詳細情報を取得し表示する．
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+実装するべき機能
+- レスポンシブデザインに対応するべき.
 
-## Learn More
+## フレームワーク
+基本的には`package-lock.json`を参照して頂ければと思います.
+以下，主要なものを列挙します．
+- JavaScript
+- Next.js : ver. 14.1.0
+- React : ver. 18
 
-To learn more about Next.js, take a look at the following resources:
+## テーブル定義などの設計ドキュメント
+今回はテーブルを定義していないので設計ドキュメントは作成しませんでした．
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## コンセプト
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## こだわったポイント
+できるだけ単純に作るにはどうしたら良いか考えながら作りました．　
+このポイントはNext.jsを選んだ理由に関係します．まず，CROSエラーを出さないために，ホットペッパーグルメサーチAPIはバックエンド側から呼び出す必要があります．
+一方で，Geolocation APIはフロント側から呼び出す必要があります．
+これらを受けて，このアプリを作り始める際に，フロントはJavaScript+React, バックはGoで書こうと思ったのですが，バックエンドで呼び出したいのがグルメサーチAPIだけなので鶏を牛刀で捌く感じがして嫌でした．
+そこで，JavaScriptでまとめて出来ないかと調べていた所，Next.jsなら出来るということがわかり採用しました．
 
-## Deploy on Vercel
+## デザイン面でこだわったポイント
+パット見でわかりやすいことを心がました．
+サイトにアクセスした人がひと目見て何を表示されているのかわかりやすいように，"現在地点からNm以内のお店を表示中！"のようなメッセージを上部に表示させています．
+加えて，検索範囲ボタンをメッセージに埋め込むことで，何も考えずに使えるようにしました．
+また，店のリスト・詳細は所謂"どこかで見たことある"デザインにしています．独特なものにするよりは有名サイトチックなデファクトなデザインにしたほうがユーザビリティが高いと考えました．
+他には，ヘッダーやページネーションはMaterial UIを使用しました．
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## アドバイスして頂きたいポイント
+以下の観点でアドバイス頂けると嬉しいです．
+- 機能やコンポーネントの切り分けが適切かどうか
+- ファイルやコンポーネントの名前がわかりやすいか
+- ソースコード中で見慣れない表記がないかどうか，自然かどうか
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+アドバイスして頂きたいポイントの背景としては，他社にコーディングテスト(言語はC++ですが)で書いたコードをレビューして頂いた際に，以下のコメントを頂いたというのがあります．
+自分でレビュー受けてみて「確かにそうかもしれない...」とは思ったのですが，同時に「例えばどこをどう直すのが良いんだろう...」という疑問が出てきました．
+技術的に成長したいと考えているので，お手数ですが教えて頂けると嬉しいです．
+- コードが競プロっぽい
+- 書き方が我流なのでOSSなどを読んで勉強した方が良い
+- もう少し機能を共通化できるところが多い
+
+
+
+## 自己評価
+研究室に配属されてからは研究漬けだったので4年ぶりにJavaScriptを書きました．
+リハビリしながら書くのはかなり楽しかったです．
+また，以前ハッカソンに参加してWebアプリを作った際は友人にデザインとCSSをやってもらっていたので，CSSを書く大変さを知りました，彼には感謝の言葉しかありません．
+
+今回は簡単な機能しか実装しませんでしたが，初手で人生初のCORSエラーを踏んで詰みかけたり，Next.jsという新しいものに触れてみたり，CSSを勉強しながら書いたりと，自分の中では学びが多かったです．
+見た目も，オシャレではないですがモダンぽい感じで実装できたので自分としては悪くないと考えています．
+その反面で，設計だったり，命名規則だったり，機能の切り分けだったりと，一人前になるにはまだまだ勉強が必要だなと感じました．
