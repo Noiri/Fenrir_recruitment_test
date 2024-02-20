@@ -16,7 +16,7 @@ export default function Home() {
   const [restaurantList, setRestaurantList] = useState();
   //何ページ目を表示するか
   const [pageNum, setPageNum] = useState(0);
-
+  //検索範囲の設定
   const [range, setRange] = useState(3);
 
   // ページ読み込み時に現在地を取得する.
@@ -26,12 +26,8 @@ export default function Home() {
         navigator.geolocation.getCurrentPosition(resolve);
       });
 
-      //const latitude = position.coords.latitude;
-      //const longitude = position.coords.longitude;
-
-      const latitude = 36.4304074; //テスト用の座標
-      const longitude = 136.4878406;
-
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
       setCurrentLocation({ latitude: latitude, longitude: longitude });
 
       const res = await fetch(
