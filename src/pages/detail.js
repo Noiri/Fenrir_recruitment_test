@@ -14,7 +14,6 @@ const Detail = () => {
 
   useEffect(() => {
     (async () => {
-      console.log(restaurant_id);
       const res = await fetch(`/api/getRestaurantDetail?id=${restaurant_id}`);
       const data = await res.json();
       setRestaurantDetail(data);
