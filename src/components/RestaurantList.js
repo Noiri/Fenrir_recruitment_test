@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
 import styles from "@/styles/restaurantList.module.css";
-import { useState } from "react";
 import SetRange from "./SetRange";
 import RestaurantDescription from "./RestaurantDescription";
 

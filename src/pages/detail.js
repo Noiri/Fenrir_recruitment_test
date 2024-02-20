@@ -1,9 +1,7 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
 import Header from "@/components/Header";
-
 import styles from "@/styles/detailPage.module.css";
 import RestaurantDescription from "@/components/RestaurantDescription";
 
