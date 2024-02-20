@@ -1,6 +1,3 @@
-import Head from "next/head";
-import Image from "next/image";
-//import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import RestaurantList from "@/components/RestaurantList";
 import ChangePageNumButton from "@/components/ChangePageNumButton";
@@ -16,8 +13,10 @@ export default function Home() {
   const [restaurantList, setRestaurantList] = useState();
   //何ページ目を表示するか
   const [pageNum, setPageNum] = useState(0);
-
+  //検索範囲の設定
   const [range, setRange] = useState(3);
+  //1ページあたりの表示件数
+  const numOfDisplaysPerPage = 10;
 
   // ページ読み込み時に現在地を取得する.
   useEffect(() => {
@@ -26,12 +25,8 @@ export default function Home() {
         navigator.geolocation.getCurrentPosition(resolve);
       });
 
-      //const latitude = position.coords.latitude;
-      //const longitude = position.coords.longitude;
-
-      const latitude = 36.4304074; //テスト用の座標
-      const longitude = 136.4878406;
-
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
       setCurrentLocation({ latitude: latitude, longitude: longitude });
 
       const res = await fetch(
@@ -52,10 +47,12 @@ export default function Home() {
           pageNum={pageNum}
           range={range}
           setRange={setRange}
+          numOfDisplaysPerPage={numOfDisplaysPerPage}
         ></RestaurantList>
         <ChangePageNumButton
           totalPageNum={restaurantList == undefined ? 0 : restaurantList.length}
           setPageNum={setPageNum}
+          numOfDisplaysPerPage={numOfDisplaysPerPage}
         ></ChangePageNumButton>
       </main>
     </>

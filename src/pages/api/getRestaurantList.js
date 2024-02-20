@@ -3,10 +3,6 @@ const handler = (req, res) => {
   const baseUrl = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/";
   const format = "json";
 
-  //const range = "5";
-  //const lat = 36.4304074; //テスト用の座標
-  //const lon = 136.4878406;
-
   let { lat, lon, range } = req.query;
 
   (async () => {

@@ -1,9 +1,7 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
 import Header from "@/components/Header";
-
 import styles from "@/styles/detailPage.module.css";
 import RestaurantDescription from "@/components/RestaurantDescription";
 
@@ -14,7 +12,6 @@ const Detail = () => {
 
   useEffect(() => {
     (async () => {
-      console.log(restaurant_id);
       const res = await fetch(`/api/getRestaurantDetail?id=${restaurant_id}`);
       const data = await res.json();
       setRestaurantDetail(data);
